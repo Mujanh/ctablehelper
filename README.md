@@ -30,23 +30,22 @@ you wish to use any of the premade table stylings.
 ##Usage
 
 ###Get Started
-First thing you need to do is to use dependency injection in Anax-MVC to include the
-```CTableHelper.php``` in your project, you do this with ```$di->set()```:
+To include the class ```CTableHelper.php``` in your Anax-MVC project, use ```$di->set()```:
 
 ####In page controller
 ```
-$di->set('table', '\\Limu\\HTMLTable\\CTableHelper');
+$di->set('table', '\Limu\HTMLTable\CTableHelper');
 ```
 
 ####In class/controller
 ```
-$this->di->set('table', '\\Anax\\HTMLTable\\CTableHelper');
+$this->di->set('table', '\Anax\HTMLTable\CTableHelper');
 ```
 
 ###Create a table
 To create a new HTML Table you will use the method ```createTable($headers, $data, $style = '')```.
 The array ```$headers``` are the table headers you wish to use.
-The multidimensinal array (or object) ```$data``` are the data that goes into the table cells. Each inner array represents one row in the table.
+The multidimensional array (or object) ```$data``` contains the data that goes into the table cells. Each inner array represents one row in the table.
 The optional string ```$style``` is which class name (and thus which styling) you wish to assign to the HTML table.
 
 ####Example (from ```TableExample.php```)
@@ -75,6 +74,7 @@ will not be created but an error message will be produced instead.
 ###Styling
 If you wish to use any of the default stylings, you need to import ```ctablehelper.css```
 to your ```style.css``` in Anax-MVC or add the module's stylesheet with ```$app->theme->addStylesheet('css/ctablehelper.css');``` in
-your page controller. Have a look att the ```TableExample.php``` to see the different styling options available.
+your page controller. Have a look at the ```TableExample.php``` to see the different styling options available, but please remember that
+you will only see the different stylings if you have moved the ```ctablehelper.css``` to your Anax-MVC css-folder.
 If you want to use your own styling, simply add a class name of your choice as a third argument to the method
 ```createTable($headers, $data, $style = '')``` and style as you like.
