@@ -1,0 +1,105 @@
+/**
+* Some prepared styling options for CTableHelper
+* Uncomment the one you will use, comment out the rest.
+*/
+
+/*
+* STYLE: Light
+*
+* Simple styling, white background, no borders and purple italic headers
+*/
+.light .ctable-tabletag {
+    width: 100%;
+}
+
+.light .ctable-headertag {
+    font-style: italic;
+    color: #666699;
+    text-align: center;
+}
+
+.light .ctable-rows td {
+    padding: 1em;
+}
+
+/*
+* STYLE: Dark
+*
+* brown/grey color theme, odd and even rows are in different shades and text colors
+*/
+.dark .ctable-tabletag {
+    width: 100%;
+}
+
+.dark .ctable-headertag th {
+    color: #ddd;
+    text-align: center;
+    background-color: #3D3737;
+    padding: 0.6em;
+}
+
+.dark .ctable-rows:nth-child(even) td{
+    color: #272222;
+    background-color: #D3C6C6;
+}
+
+.dark .ctable-rows:nth-child(odd) {
+    background-color: #998E8E;
+}
+
+.dark .ctable-rows td {
+    padding: 1em;
+    color: #ddd;
+}
+
+/*
+* STYLE: oddeven
+*
+* bottom-border under header, even rows have white background, odd have a greenish grey color
+*/
+.oddeven .ctable-tabletag {
+    width: 100%;
+}
+
+.oddeven .ctable-headertag th {
+    text-align: center;
+    border-bottom: 1px solid black;
+    padding: 0.6em;
+}
+
+.oddeven .ctable-rows:nth-child(even) td{
+    background-color: #FFFFFF;
+}
+
+.oddeven .ctable-rows:nth-child(odd) {
+    background-color: #E2EAE2;
+}
+
+.oddeven .ctable-rows td {
+    padding: 1em;
+}
+
+
+/*
+* STYLE: colorful
+*
+* pink background on headers, bottom border on rows
+*/
+.colorful .ctable-tabletag {
+    width: 100%;
+}
+
+.colorful .ctable-headertag th {
+    text-align: center;
+    padding: 0.6em;
+    background-color: #DE0052;
+    color: #FFFFFF;
+}
+
+.colorful .ctable-rows td {
+    padding: 1em;
+}
+
+.colorful .ctable-rows td {
+    border-bottom: 1px solid black;
+}

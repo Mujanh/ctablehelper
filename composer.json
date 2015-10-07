@@ -1,0 +1,21 @@
+{
+    "name": "limu/ctablehelper",
+    "type": "library",
+    "description": "PHP class for creating tables from arrays (html helper)",
+    "keywords": ["module", "html", "education", "tables"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Linnéa Muje",
+            "email": "limu15@student.bth.se",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.4"
+    },
+    "autoload": {
+        "psr-4": { "Limu\\": "src/" }
+    }
+
+}
