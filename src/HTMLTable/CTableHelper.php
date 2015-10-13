@@ -28,7 +28,7 @@ class CTableHelper {
     /**
     * Creates the table headers for each column (can be left as an empty array to exclude headers).
     *
-    * @param array $header contains headers for columns in table
+    * @param array $headers contains headers for columns in table
     *
     * @return string $html, html code used to create table headers
     */
@@ -97,9 +97,10 @@ class CTableHelper {
             $checkValue = 0;
             for ($i = 0; $i < count($data); $i++) {
                 foreach ($data AS $key => $value) {
+                    $counted = count($value);
                     if ($i === 0) {
-                        $checkValue = count($value);
-                    } elseif ($checkValue != count($value)) {
+                        $checkValue = $counted;
+                    } elseif ($checkValue != $counted) {
                         return "Failed to create HTMLTable, not equal nr of cells in each row.";
                     }
                 }
