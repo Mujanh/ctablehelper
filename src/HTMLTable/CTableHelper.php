@@ -62,6 +62,61 @@ class CTableHelper {
     }
 
     /**
+    * Checks if nr of headers are the same as nr of columns
+    * @param array $headers all headers
+    * @param array $headers all data cells
+    *
+    * @return void or string if different nr of columns and headers
+    */
+    private function checkNrOfHeaders($headers, $data) {
+        $nrHeaders = count($headers);
+        foreach ($data AS $key => $value) {
+            $nrValue = count($value);
+            if ($nrValue != $nrHeaders) {
+                return "Failed to create HTMLTable, not an equal nr of headers and columns.";
+            }
+        }
+    }
+
+    /**
+    * Checks if nr of cells are the same in each row
+    * @param array $data all data cells
+    *
+    * @return void or string if different nr of cells on each row
+    */
+    private function checkNrOfCells($data) {
+        //Check if there are the same number of cells in each row
+        $checkValue = 0;
+        $nrOfCells = count($data);
+        for ($i = 0; $i < $nrOfCells; $i++) {
+            foreach ($data AS $key => $value) {
+                $counted = count($value);
+                if ($i === 0) {
+                    $checkValue = $counted;
+                } elseif ($checkValue != $counted) {
+                    return "Failed to create HTMLTable, not equal nr of cells in each row.";
+                }
+            }
+        }
+    }
+
+    /**
+    * Set the CSS class to be used for styling. Only accept strings.
+    *
+    * @param string $style the CSS class used for styling
+    *
+    * @return void
+    */
+    private function setStyle($style){
+        //Checks if $style is a string, if not use default light as styling
+        if(is_string($style)){
+            $this->cssClass = $style;
+        } else {
+            $this->cssClass = 'light';
+        }
+    }
+
+    /**
     * Creates a HTML Table.
     *
     * @param array $headers contains the table headers. Use empty array (array() or []) for table without headers.
@@ -85,35 +140,14 @@ class CTableHelper {
         //Check that the nr of headers (if more than zero) matches nr of data columns
         // and if there are no headings, check that all rows contain the same number of columns
         if (!empty($headers)) {
-            $nrHeaders = count($headers);
-            foreach ($data AS $key => $value) {
-                $nrValue = count($value);
-                if ($nrValue != $nrHeaders) {
-                    return "Failed to create HTMLTable, not an equal nr of headers and columns.";
-                }
+            $this->checkNrOfHeaders($headers, $data);
             }
         } else {
-            //Check if there are the same number of cells in each row
-            $checkValue = 0;
-            $nrOfCells = count($data);
-            for ($i = 0; $i < $nrOfCells; $i++) {
-                foreach ($data AS $key => $value) {
-                    $counted = count($value);
-                    if ($i === 0) {
-                        $checkValue = $counted;
-                    } elseif ($checkValue != $counted) {
-                        return "Failed to create HTMLTable, not equal nr of cells in each row.";
-                    }
-                }
-            }
+            $this->checkNrOfCells($data);
         }
 
-        //Checks if $style is a string, if not use default light as styling
-        if(is_string($style)){
-            $this->cssClass = $style;
-        } else {
-            $this->cssClass = 'light';
-        }
+        //Set css class
+        $this->setStyle($style);
 
         $tableHeader = $this->createHeaders($headers);
         $tableCells = $this->createCells($data);
