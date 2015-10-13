@@ -66,7 +66,7 @@ class CTableHelper {
     * @param array $headers all headers
     * @param array $headers all data cells
     *
-    * @return void or string if different nr of columns and headers
+    * @return true or false if different nr of columns and headers
     */
     private function checkNrOfHeaders($headers, $data) {
         $nrHeaders = count($headers);
@@ -82,7 +82,7 @@ class CTableHelper {
     * Checks if nr of cells are the same in each row
     * @param array $data all data cells
     *
-    * @return void or string if different nr of cells on each row
+    * @return bool true or false if different nr of cells on each row
     */
     private function checkNrOfCells($data) {
         //Check if there are the same number of cells in each row
@@ -94,10 +94,11 @@ class CTableHelper {
                 if ($i === 0) {
                     $checkValue = $counted;
                 } elseif ($checkValue != $counted) {
-                    return "Failed to create HTMLTable, not equal nr of cells in each row.";
+                    return false;
                 }
             }
         }
+        return true;
     }
 
     /**
@@ -140,10 +141,13 @@ class CTableHelper {
         //Check that the nr of headers (if more than zero) matches nr of data columns
         // and if there are no headings, check that all rows contain the same number of columns
         if (!empty($headers)) {
-            $this->checkNrOfHeaders($headers, $data);
+            if(!$this->checkNrOfHeaders($headers, $data) == false) {
+                return "Failed to create HTMLTable, not an equal nr of headers and columns.";
             }
         } else {
-            $this->checkNrOfCells($data);
+            if($this->checkNrOfCells($data) == false) {
+                return "Failed to create HTMLTable, not equal nr of cells in each row.";
+            }
         }
 
         //Set css class
