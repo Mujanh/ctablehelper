@@ -1,3 +1,6 @@
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Mujanh/ctablehelper/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Mujanh/ctablehelper/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/Mujanh/ctablehelper/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/Mujanh/ctablehelper/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/Mujanh/ctablehelper/badges/build.png?b=master)](https://scrutinizer-ci.com/g/Mujanh/ctablehelper/build-status/master)
 #CTableHelper
 
 CTableHelper is a HTML Helper that helps you create HTML tables. It is written in PHP
