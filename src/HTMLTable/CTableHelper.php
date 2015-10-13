@@ -141,11 +141,11 @@ class CTableHelper {
         //Check that the nr of headers (if more than zero) matches nr of data columns
         // and if there are no headings, check that all rows contain the same number of columns
         if (!empty($headers)) {
-            if(!$this->checkNrOfHeaders($headers, $data) == false) {
+            if(!$this->checkNrOfHeaders($headers, $data) === false) {
                 return "Failed to create HTMLTable, not an equal nr of headers and columns.";
             }
         } else {
-            if($this->checkNrOfCells($data) == false) {
+            if($this->checkNrOfCells($data) === false) {
                 return "Failed to create HTMLTable, not equal nr of cells in each row.";
             }
         }
