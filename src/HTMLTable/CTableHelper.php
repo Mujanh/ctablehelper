@@ -95,7 +95,8 @@ class CTableHelper {
         } else {
             //Check if there are the same number of cells in each row
             $checkValue = 0;
-            for ($i = 0; $i < count($data); $i++) {
+            $nrOfCells = count($data);
+            for ($i = 0; $i < $nrOfCells; $i++) {
                 foreach ($data AS $key => $value) {
                     $counted = count($value);
                     if ($i === 0) {
