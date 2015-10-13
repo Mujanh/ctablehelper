@@ -73,9 +73,10 @@ class CTableHelper {
         foreach ($data AS $key => $value) {
             $nrValue = count($value);
             if ($nrValue != $nrHeaders) {
-                return "Failed to create HTMLTable, not an equal nr of headers and columns.";
+                return false;
             }
         }
+        return true;
     }
 
     /**
@@ -141,7 +142,7 @@ class CTableHelper {
         //Check that the nr of headers (if more than zero) matches nr of data columns
         // and if there are no headings, check that all rows contain the same number of columns
         if (!empty($headers)) {
-            if(!$this->checkNrOfHeaders($headers, $data) === false) {
+            if($this->checkNrOfHeaders($headers, $data) === false) {
                 return "Failed to create HTMLTable, not an equal nr of headers and columns.";
             }
         } else {
